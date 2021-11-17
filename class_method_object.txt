@@ -1,0 +1,22 @@
+airport - class
+pilot, passenger,airplane,airhostess - objects
+eating(), flying(),sitting() - methods
+
+
+bikes - class
+yamaha,honda,hero,tata - objects
+changegear(),getoiltemp(),getspeed(),getrotationsofwheel() - methods
+
+
+syntax - skelton code
+
+syntax for a class
+
+Class classname{
+}
+
+syntax for an object
+classname objectname = new classname(); -- instance of a class
+
+syntax for a method
+accessmodifier returntype methodname()
