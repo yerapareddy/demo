@@ -1,7 +1,10 @@
 package seleniumtraining;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class dropdowns {
@@ -13,7 +16,8 @@ public class dropdowns {
 		dropdowns dropdowns = new dropdowns();
 		//dropdowns.staticdropdown(driver);
 		dropdowns.staticdropdowninmmt(driver);
-		dropdowns.autosuggestdropdown(driver);
+		//dropdowns.autosuggestdropdown(driver);
+		dropdowns.selectdateincalendar(driver,"August","1");
 	}
 	
 	public static void staticdropdown(WebDriver driver) throws InterruptedException{
@@ -45,6 +49,7 @@ public class dropdowns {
 		driver.findElement(By.xpath("//p[text()='India']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//button[contains(text(),'Apply')]")).click();
+		driver.findElement(By.xpath("//p[@data-cy='departureDate']")).click();
 	}
 	
 	public static void autosuggestdropdown(WebDriver driver) throws InterruptedException{
@@ -64,5 +69,29 @@ public class dropdowns {
 		driver.findElement(By.xpath("//button[contains(text(),'APPLY')]")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Search')]")).click();
 	}
-
+	
+	public static void selectdateincalendar(WebDriver driver,String monthtoselect,String datetoselect) throws InterruptedException{
+		
+		Thread.sleep(2000);
+		List<WebElement> months = driver.findElements(By.xpath("//div[@class='DayPicker-Month']/div[@class='DayPicker-Caption']/div"));
+		boolean dateselected = false;
+		for(WebElement month :months){
+			month.getText();
+			if(month.getText().contains(monthtoselect)){
+				String xpath = "//div[contains(text(),'"+monthtoselect+"')]/../following-sibling::div[@class='DayPicker-Body']//div[contains(@class,'DayPicker-Day')][@aria-disabled='false']/div/p[1]";
+				List<WebElement> dates = driver.findElements(By.xpath(xpath));
+				for(WebElement date: dates){
+					if(date.getText().equals(datetoselect)){
+						date.click();
+						dateselected=true;
+						break;
+					}
+				}
+			}			
+		}
+		if(!dateselected){
+			driver.findElement(By.xpath("//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")).click();
+			selectdateincalendar(driver,monthtoselect,datetoselect);
+		}
+	}
 }
