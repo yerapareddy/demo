@@ -16,8 +16,8 @@ public class dropdowns {
 		dropdowns dropdowns = new dropdowns();
 		//dropdowns.staticdropdown(driver);
 		dropdowns.staticdropdowninmmt(driver);
-		//dropdowns.autosuggestdropdown(driver);
-		dropdowns.selectdateincalendar(driver,"August","1");
+		dropdowns.autosuggestdropdown(driver);
+		dropdowns.checkbox(driver);
 	}
 	
 	public static void staticdropdown(WebDriver driver) throws InterruptedException{
@@ -32,6 +32,7 @@ public class dropdowns {
 	}
 	
 	public static void staticdropdowninmmt(WebDriver driver) throws InterruptedException{
+		try{
 		driver.get("https://www.makemytrip.com/");
 		driver.manage().window().maximize();
 		driver.findElement(By.xpath("//div[@data-cy='outsideModal']")).click();
@@ -49,7 +50,9 @@ public class dropdowns {
 		driver.findElement(By.xpath("//p[text()='India']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//button[contains(text(),'Apply')]")).click();
-		driver.findElement(By.xpath("//p[@data-cy='departureDate']")).click();
+		}catch(Exception e){
+			System.out.println("element is not dispalyed");
+		}
 	}
 	
 	public static void autosuggestdropdown(WebDriver driver) throws InterruptedException{
@@ -62,7 +65,13 @@ public class dropdowns {
 		driver.findElement(By.xpath("//input[@placeholder='To']")).sendKeys("chennai");
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//li/div/div/p[contains(text(),'Chennai')]")).click();
-		driver.findElement(By.xpath("//div[@class='DayPicker-Day DayPicker-Day--today']")).click();
+		//selecting today's date
+		//driver.findElement(By.xpath("//div[@class='DayPicker-Day DayPicker-Day--today']")).click();
+		//driver.findElement(By.xpath("//p[@data-cy='departureDate']")).click();
+		Thread.sleep(1000);
+		System.out.println("is displayed --"+driver.findElement(By.xpath("//div[@class='DayPicker-Month']/div[@class='DayPicker-Caption']/div")).isDisplayed());
+		//selecting flexible date
+		dropdowns.selectdateincalendar(driver,"August","1");
 		driver.findElement(By.xpath("//input[@id='travellers']/preceding-sibling::span")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//li[@data-cy='adults-2']")).click();
@@ -77,6 +86,9 @@ public class dropdowns {
 		boolean dateselected = false;
 		for(WebElement month :months){
 			month.getText();
+//			System.out.println("is enabled --"+driver.findElement(By.xpath("//div[contains(text(),'December')]/../following-sibling::div[@class='DayPicker-Body']//div[contains(@class,'DayPicker-Day')]/div/p[1]")).isEnabled());
+//			System.out.println("is selected --"+driver.findElement(By.xpath("(//div[contains(text(),'December')]/../following-sibling::div[@class='DayPicker-Body']//div[contains(@class,'DayPicker-Day')]/div/p[1])[16]")).isSelected());
+//			
 			if(month.getText().contains(monthtoselect)){
 				String xpath = "//div[contains(text(),'"+monthtoselect+"')]/../following-sibling::div[@class='DayPicker-Body']//div[contains(@class,'DayPicker-Day')][@aria-disabled='false']/div/p[1]";
 				List<WebElement> dates = driver.findElements(By.xpath(xpath));
@@ -93,5 +105,10 @@ public class dropdowns {
 			driver.findElement(By.xpath("//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")).click();
 			selectdateincalendar(driver,monthtoselect,datetoselect);
 		}
+	}
+	
+	public static void checkbox(WebDriver driver) throws InterruptedException{
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//span[@title='Refundable Fares']/../preceding-sibling::span/span")).click();
 	}
 }
