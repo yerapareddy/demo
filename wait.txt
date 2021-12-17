@@ -1,0 +1,15 @@
+Thread.sleep() - java wait time
+
+
+
+implicit wait - global wait time - this is applied for every step
+		- lets say if you are giving wait time as 5 sec, but the element loaded in 3 sec but it will wait for 5 sec
+explicit wait - this is applied for a particular element
+		- lets say if you are giving wait time as 5 sec, but the element loaded in 3 sec so it will wait for only 3 secs
+fluent wait - lets say if you are giving wait time as 10 sec, and if you are giving frequency as 2 sec , after every 2 sec it will look for the element
+
+
+
+add credit card - 1
+after 4 secs it will give me a message "processing"
+after 7 secs it will give me a messafe "completed"
