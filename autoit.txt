@@ -1,0 +1,11 @@
+Steps to upload file using AutoIt:
+
+1. Download AutoIt from https://www.autoitscript.com/site/autoit/downloads/
+2. Run the application
+3. Go into AutoIt folder
+4. Select SciTE under SciTe folder
+5. for finding path clickon Au3Info application
+6. once script is saved in .au3
+7. click on Aut2Exe and click on Aut2Exe application
+8. select .au3 file and convert to .exe 
+9. use that in selenium
