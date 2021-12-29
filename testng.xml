@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Makemytrip search flights" parallel="false"> <!-- collection of testcases -->
+<groups>
+<run>
+<include name="smoke"></include>
+<include name="regression"></include>
+</run>
+</groups>
+<parameter name="env" value="dev"></parameter>
+<parameter name="url" value="devhdfc"></parameter>
+
   <test name="login"> <!-- grouping of test steps -->
     <classes>
       <class name="testngtraining.login"/><!-- test step -->
-      <class name="testngtraining.enterurl"/>
-   
+      <class name="testngtraining.enterurl"/> 
+      <class name="testngtraining.logout">  
+      <methods>
+      <exclude name=".*login"></exclude>
+      </methods> 
+      </class>
     </classes>
   </test> <!-- Test -->
-  <test name="registration">
-  
+  <test name="browser">
+  <classes>
+  <class name="testngtraining.browser"></class>
+  </classes>
+  </test>
+  <test name="loans section">
+  <classes>
+  <class name="testngtraining.loans"></class>
+  </classes>
   </test>
 </suite> <!-- Suite -->
