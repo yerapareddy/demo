@@ -1,0 +1,25 @@
+1. maven is a central repository which has different jars
+
+
+2. below four lines will explain that which jar to download from repository
+<dependency>
+	<groupId>org.orghq.selenium</groupId>
+	<artifactId>selenium-java</artifactId>
+	<version>3.0.0</version>
+</dependency>
+
+3.pom.xml is the file where we need to add all our dependencies
+pom - project object model
+
+4. create a maven project in eclipse
+5. enter groupid, artifactid and click on finish
+6. add dependency in pom.xml file
+7. Right click on project -> Run as -> Maven build (goal as clean)->Maven install
+8. Right click on project -> Maven ->Update maven project ->check force update checkbox and click on finish
+
+commands for maven:
+
+mvn clean   --> delete unnecessary jars inside reporistory
+mvn install --> install/download dependency jars to your local
+mvn clean install --> first delete unused jars and then install dependencies to your local
+mvn -Dtest=<name of your test> --> it will run testcases/testng.xmls
