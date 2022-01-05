@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- command to run this xml in maven
+
+mvn integration-test -Dfile=amazon.xml -->
 <suite name="Suite" parallel="none">
   <test name="Test">
     <classes>
-      <class name="framework.hybrid.socialmediaTest"/>
+      <class name="framework.hybrid.AmazonTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

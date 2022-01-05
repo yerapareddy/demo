@@ -1,0 +1,10 @@
+************command to run one xml at a time********
+
+mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/amazon.xml
+
+
+*******************Framework Folder structure**************
+
+src/main/java - test steps will be written here
+src/test/java - this will have test cases
+src/test/resources - this will have testng xmls

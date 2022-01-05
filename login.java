@@ -1,15 +1,19 @@
-package testngtraining;
+package framework.hybrid;
 
-import org.testng.annotations.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class login {
-	@Test(priority=1,groups={"smoke","regression","sanity"})
-	
-	public static void enterusername(){
-		System.out.println("entered username");
+
+	public static void username(String xpath,String text){
+		WebDriver driver= new ChromeDriver();
+		driver.findElement(By.xpath(xpath)).sendKeys(text);
 	}
-	@Test(priority=2,groups={"smoke","regression","sanity"})
-	public static void enterpassword(){
-		System.out.println("entered password");
+	public static void password(){
+		System.out.println("sending password");
+	}
+	public static void clicklogin(){
+		System.out.println("clicked on login button");
 	}
 }
