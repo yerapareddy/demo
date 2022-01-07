@@ -1,0 +1,25 @@
+Download jenkins installation file
+
+****https://www.jenkins.io/
+****click on Download
+****select windows
+****jenkins.msi file will be downloaded
+
+**** run that jenkins.msi file
+**** choose run as local system
+**** click on Next
+**** click on Install
+**** once it is installed open a browser with url as http://localhost:8080
+
+**** click on New item
+**** enter name 
+**** select freestyle project
+**** click on configure
+**** under source code management -> select git -> give the github url
+**** Build -> we have to provide windows batch command
+*** Add Build ->Select Execute windows batch command
+*** click on save
+
+
+**** if you want to run a project click on "Build with Parameters"/"Build"
+

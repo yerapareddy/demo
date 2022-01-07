@@ -1,0 +1,26 @@
+##github is a repository where code is stored
+
+##command to get the existing repository to your local
+git clone <url>
+
+###once the project is cloned, we have to import that project to eclipse
+--open eclipse
+	click on file->Import->Maven->Existing Maven projects->browse directort where pom.xml file is there->Finish
+--make your changes in eclipse
+--next step is to commit the changes to github
+***** git status    -- shows you the files that you modified/added
+***** git add <added/modified filename>
+***** git commit -m "comments"
+***** git push
+
+
+if you are already committed once then you should do git pull
+***** git pull
+***** git status    -- shows you the files that you modified/added
+***** git add <added/modified filename>
+***** git commit -m "comments"
+***** git push
+
+## for creating a branch
+***** git checkout -b <branchname>
+
